@@ -59,6 +59,7 @@ class UNet(nn.Module):
             stride=2)
         self.up_conv_4 = double_conv(128, 64)
 
+        # out_channels should be set to the number of classes
         self.out = nn.Conv2d(
             in_channels=64,
             out_channels=2,
@@ -100,7 +101,6 @@ class UNet(nn.Module):
         return x
 
 
-if __name__ == "__main__":
-    image = torch.rand((1, 1, 572, 572))
-    model = UNet()
-    print(model(image))
+image = torch.rand((1, 1, 572, 572))
+model = UNet()
+print(model(image))
